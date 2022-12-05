@@ -1,3 +1,5 @@
+/* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
+
 {
   ('use strict');
 
@@ -30,6 +32,7 @@
         linkIncrease: 'a[href="#more"]',
       },
     },
+    
     cart: {
       productList: '.cart__order-summary',
       toggleTrigger: '.cart__summary',
@@ -49,6 +52,7 @@
       edit: '[href="#edit"]',
       remove: '[href="#remove"]',
     },
+    
   };
 
   const classNames = {
@@ -56,9 +60,11 @@
       wrapperActive: 'active',
       imageVisible: 'active',
     },
+    
     cart: {
       wrapperActive: 'active',
     },
+    
   };
 
   const settings = {
@@ -67,18 +73,22 @@
       defaultMin: 1,
       defaultMax: 9,
     }, 
+    
     cart: {
       defaultDeliveryFee: 20,
     },
+    
   };
 
   const templates = {
     menuProduct: Handlebars.compile(
       document.querySelector(select.templateOf.menuProduct).innerHTML
     ),
+    
     cartProduct: Handlebars.compile(
       document.querySelector(select.templateOf.cartProduct).innerHTML
     ),
+    
   };
 
   class Product {
@@ -129,20 +139,22 @@
     initAccordion() {
       const thisProduct = this;
 
+      /* START: add event listener to clickable trigger on event click */
       thisProduct.accordionTrigger.addEventListener('click', function (event) {
         /* prevent default action for event */
         event.preventDefault();
 
+        /* find active product (product that has active class) */
         const activeProduct = document.querySelector(
           select.all.menuProductsActive
         );
 
-
+        /* if there is active product and it's not thisProduct.element, remove class active from it */
         if (activeProduct && activeProduct !== thisProduct.element) {
           activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
         }
 
-  
+        /* toggle active class on thisProduct.element */
         thisProduct.element.classList.toggle(
           classNames.menuProduct.wrapperActive
         );
@@ -313,6 +325,7 @@
       ) {
         thisWidget.value = newValue;
         thisWidget.announce();
+        console.log(thisWidget.value);
       }
 
       thisWidget.input.value = thisWidget.value;
@@ -392,7 +405,7 @@
 
       thisCartProduct.id = menuProduct.id;
       thisCartProduct.name = menuProduct.name;
-      thisCartProduct.amount = menuProduct.amount;
+      thisCartProduct.amount = menuProduct.menu;
       thisCartProduct.priceSingle = menuProduct.priceSingle;
       thisCartProduct.price = menuProduct.price;
       thisCartProduct.params = menuProduct.params;
@@ -429,7 +442,6 @@
       thisCartProduct.dom.amountWidget.addEventListener('updated', () => {
         thisCartProduct.processCartProduct();
       });
-
       thisCartProduct.amountWidget.setValue(thisCartProduct.amount);
     }
 
