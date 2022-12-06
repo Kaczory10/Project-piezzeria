@@ -402,7 +402,7 @@
 
       thisCart.dom.productList.addEventListener('remove', (event) => {
         thisCart.remove(event.detail.cartProduct);
-      })
+      });
     }
 
     add(menuProduct) {
@@ -501,7 +501,7 @@
       thisCartProduct.dom.remove.addEventListener('click', (event) => {
         event.preventDefault();
         thisCartProduct.remove();
-      })
+      });
     }
 
     initAmountWidget() {
