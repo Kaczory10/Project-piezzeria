@@ -25,7 +25,7 @@ class AmountWidget {
     const thisWidget = this;
 
     const newValue = parseInt(value);
-
+    console.log(newValue);
     if (
       thisWidget.value !== newValue &&
       !isNaN(newValue) &&
