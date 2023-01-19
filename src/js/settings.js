@@ -43,6 +43,12 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    phone: '[name="phone"]',
+    address: '[name="address"]',
+    form: '.booking-form',
+    tableSelected: '.selected',
+    water: '[value="water"]',
+    bread: '[value="bread"]',
   },
   nav: {
     links: '.main-nav a',
@@ -66,6 +72,7 @@ export const select = {
     edit: '[href="#edit"]',
     remove: '[href="#remove"]',
   },
+
 };
 
 export const classNames = {
@@ -80,6 +87,7 @@ export const classNames = {
   booking: {
     loading: 'loading',
     tableBooked: 'booked',
+    tableSelected: 'selected',
   },
   nav: {
     active: 'active',
