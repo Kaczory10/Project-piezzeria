@@ -269,7 +269,11 @@ class Booking {
       body: JSON.stringify(payload),
     };
     const url = settings.db.url + '/' + settings.db.booking;
-    fetch(url, options);
+    fetch(url, options).then(function(response) {
+      return response.json();
+    }).then(function(booking) {
+      thisBook.makeBooked(booking.date, booking.hour, booking.duration, booking.table);
+    });
 
     console.log(payload);
   }
